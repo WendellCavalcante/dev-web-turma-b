@@ -17,10 +17,32 @@ function iniciar(){
         //criar uma elemento da minha lista de tarefas
         const itemLista = document.createElement("li");
 
+        //criei um botão
+        const btnRemover = document.createElement("button");
+        btnRemover.textContent = "x";
+        btnRemover.classList.add("fechar");
+
+        btnRemover.addEventListener("click", () => {itemLista.remove();})
+        
+
+
         // adicionar o valor do input
         itemLista.textContent = text;
 
+        //adcionar lista para ser apresentado
+        itemLista.appendChild(btnRemover);
+
+
+        itemLista.addEventListener("click", () => {
+            itemLista.classList.toggle("concluida");
+        })
+
+
+        //adiciona item na lista
         lista.appendChild(itemLista);
+
+
+        input2.value = "";
         
     });
 
