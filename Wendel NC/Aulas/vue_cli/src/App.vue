@@ -1,42 +1,56 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png">
-
-    <HomeComponent />
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <h1>Meu Primeiro App Vue</h1>
+    <p class="subtitulo">Vamos aprender muito!</p>
+    <br />
+    <estilo-component />
+    <br />
+    <home-component />
     <hr />
-
-    <HomeComponent />
-    <hr />
-
-    <UsuarioComponent />
+    <usuario-component v-show="componentUsuarioVisivel" />
+    <br />
+    <imagem-component
+      @visibilidade-img="escutarVisibilidadeImg"
+      larguraImg="500"
+      urlImagem="https://i0.statig.com.br/bancodeimagens/9d/jk/aj/9djkajlyxduup2fnr6qq4114l.jpg"
+    />
   </div>
 </template>
 
 <script>
-import HomeComponent from './components/HomeComponent.vue';
-import UsuarioComponent from './components/UsuarioComponent.vue';
-import EstiloComponent from './components/EstiloComponent.vue';
-
+import HomeComponent from "./components/HomeComponent.vue";
+import UsuarioComponent from "./components/UsuarioComponent.vue";
+import EstiloComponent from "./components/EstiloComponent.vue";
+import ImagemComponent from "./components/ImagemComponent.vue";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
     HomeComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    EstiloComponent,
+    ImagemComponent,
   },
-
-  created() {
-    console.log("created");
+  data() {
+    return {
+      componentUsuarioVisivel: true,
+    };
   },
-
+  methods: {
+    escutarVisibilidadeImg(isVisivel) {
+      this.componentUsuarioVisivel = !isVisivel;
+    },
+  },
   mounted() {
     console.log("mounted");
   },
-
   errorCaptured() {
     console.log("errorCaptured");
-  }
+  },
+  created() {
+    console.log("created");
+  },
 };
 </script>
 
